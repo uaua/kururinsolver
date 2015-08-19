@@ -74,14 +74,14 @@ x00003b52:
     // printf("%x %x %x %x %x %x %x %x\n", r0, r1, r2, r3, r4, r5, r6, r7);
   }
   /*
-  printf(" r0:0x%x\n",r0);
-  printf(" r1:0x%x\n",r1);
-  printf(" r2:0x%x\n",r2);
-  printf(" r3:0x%x\n",r3);
-  printf(" r4:0x%x\n",r4);
-  printf(" r5:0x%x\n",r5);
-  printf(" r6:0x%x\n",r6);
-  printf(" r7:0x%x\n",r7);
+    printf(" r0:0x%x\n",r0);
+    printf(" r1:0x%x\n",r1);
+    printf(" r2:0x%x\n",r2);
+    printf(" r3:0x%x\n",r3);
+    printf(" r4:0x%x\n",r4);
+    printf(" r5:0x%x\n",r5);
+    printf(" r6:0x%x\n",r6);
+    printf(" r7:0x%x\n",r7);
   */
   
   r3 = 0;
@@ -212,7 +212,7 @@ void init(int id, int sid) {
   r0: なにかの配列 0x03003134
   r1: heri.x
   r2: heri.y
- */
+*/
 void chk(int w, int h) {
   r5 = r1;
   r5 <<= 0x10;
@@ -235,9 +235,9 @@ void chk(int w, int h) {
 int main(void) {
   // init(0, 1);
   /*
-  r0 = 0x081e73b0;
-  r1 = 0x02000000;
-  r2 = 0x8000;
+    r0 = 0x081e73b0;
+    r1 = 0x02000000;
+    r2 = 0x8000;
   */
   
   // r0 = 0x081e9c40; int w = 0x80; int h = 0x40; // 0-0
@@ -267,20 +267,20 @@ int main(void) {
   // printf("%x %x %x %x %x %x %x %x\n", r0, r1, r2, r3, r4, r5, r6, r7);
   //ofstream ofs("dump.dat", std::ofstream::binary);
   /*
-  for (int i = 0; i < r2; i++) {
+    for (int i = 0; i < r2; i++) {
     char c = get(base+i);
     ofs.write(&c, 1);
-  }
+    }
   */
   // ofs.write(res, len);
   //*
   int x, y;
   printf("%d %d\n", w, h);
   /*
-  for (int i = 0; i < w*2*h+0x4*2; i++) {
+    for (int i = 0; i < w*2*h+0x4*2; i++) {
     printf("%02x ", res[w*2*h+i]&0xff);
     if ((i+1)%16 == 0) puts("");
-  }
+    }
   */
   
 #if 1
@@ -291,16 +291,16 @@ int main(void) {
       if (x%2 == 1) printf(" ");
       // */
       /*
-      if ((res[y*w*2+x]&0xff) == 0xea ||
-          (res[y*w*2+x]&0xff) == 0xfd ||
-          (res[y*w*2+x]&0xff) == 0xfe) {
-       printf("o");
-      } else if (res[y*w*2+x] != 0) {
-       printf("#");
-      } else {
-       printf(" ");
-      }
-      // */
+        if ((res[y*w*2+x]&0xff) == 0xea ||
+        (res[y*w*2+x]&0xff) == 0xfd ||
+        (res[y*w*2+x]&0xff) == 0xfe) {
+        printf("o");
+        } else if (res[y*w*2+x] != 0) {
+        printf("#");
+        } else {
+        printf(" ");
+        }
+        // */
     }
     puts("");
   }
@@ -308,14 +308,14 @@ int main(void) {
   //*/
   
   /*
-  for (int i = 0; i < len; i++) {
+    for (int i = 0; i < len; i++) {
     if (i%16 == 0) {
-      printf("%08X: ", base+i);
+    printf("%08X: ", base+i);
     }
     printf("%02x ", res[i]&0xff);
     if ((i+1)%16 == 0) {
-      puts("");
+    puts("");
     }
-  }
+    }
   //*/
 }

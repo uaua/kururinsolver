@@ -121,12 +121,12 @@ int main(void) {
         gy = i*8 << 16;
       }
       /*
-			unsigned short p = g[i][j]&0x3ff;
-			if (p <= 0x9e) {
-      // ok
-			} else {
-      // ng
-			}
+        unsigned short p = g[i][j]&0x3ff;
+        if (p <= 0x9e) {
+        // ok
+        } else {
+        // ng
+        }
       */
 		}
 	}
@@ -136,7 +136,7 @@ int main(void) {
   priority_queue<state, vector<state>, greater<state> > q;
   q.push(state((sx*8)<<16, (sy*8)<<16, 0, nullptr));
   /*
-  for (int j = 0; j < 16; j++) {
+    for (int j = 0; j < 16; j++) {
     printf("%d %d:%d %d\n", ((sx*8)), ((sy*8)), unsigned(zx(256*4, j)), unsigned(zy(256*4, j)));
     unsigned px = ((sx*8)<<16) + (unsigned(zx(256*4, j))<<16);
     unsigned py = ((sy*8)<<16) + (unsigned(zy(256*4, j))<<16);
@@ -147,7 +147,7 @@ int main(void) {
   // return 0;
 
   std::array<unsigned, 24> dx {
-        0x00000000, 0x00000000, 0x00000000, // ue
+    0x00000000, 0x00000000, 0x00000000, // ue
         0x00018000, 0x00024000, 0x00030000, // migi
         0x00000000, 0x00000000, 0x00000000, // shita
         0xfffe8000, 0xfffdc000, 0xfffd0000, // hidari
@@ -155,11 +155,11 @@ int main(void) {
         0x00010f80, 0x00019740, 0x00021f00, // migi shita
         0xfffef080, 0xfffe68c0, 0xfffde100, // hidari shita
         0xfffef080, 0xfffe68c0, 0xfffde100, // hidari ue
-            // 0 // houchi
+        // 0 // houchi
         };
   
   std::array<unsigned, 24> dy {
-        0xfffe8000, 0xfffdc000, 0xfffd0000, // ue
+    0xfffe8000, 0xfffdc000, 0xfffd0000, // ue
         0x00000000, 0x00000000, 0x00000000, // migi
         0x00018000, 0x00024000, 0x00030000, // shita
         0x00000000, 0x00000000, 0x00000000, // hidari
@@ -167,11 +167,11 @@ int main(void) {
         0x00010f80, 0x00019740, 0x00021f00, // migi shita
         0x00010f80, 0x00019740, 0x00021f00, // hidari shita
         0xfffef080, 0xfffe68c0, 0xfffde100, // hidari ue
-            // 0, // houchi
+        // 0, // houchi
         };
   
   std::array<const char*, 24> key{
-        "u",  "au",  "abu",
+    "u",  "au",  "abu",
         "r",  "ar",  "abr",
         "d",  "ad",  "abd",
         "l",  "al",  "abl",
@@ -179,13 +179,13 @@ int main(void) {
         "rd", "ard", "abrd",
         "ld", "ald", "abld",
         "lu", "alu", "ablu",
-            // "",
-  };
+        // "",
+        };
 
   /*
-  for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < 16; i++) {
     printf("%d %d\n", zx(2184, i), zy(2184, i));
-  }
+    }
   */
   
   int ccc = 0, mx = 0;
@@ -226,7 +226,7 @@ int main(void) {
     
     // printf("%x %x %d\n", x, y, ang);
     for (int i = 0; i < int(dx.size()); i++) {
-    // {
+      // {
       // int i = history[p.cost];
       const unsigned nx = x+dx[i];
       const unsigned ny = y+dy[i];
@@ -253,40 +253,40 @@ int main(void) {
           // printf("%d %d %d\n", nx>>16, ny>>16, cnt[ny>>16][nx>>16][p.cost+1]);
           q.push(state(nx, ny, p.cost+1, new list(p.l, i)));
         }
+        }
       }
     }
-  }
-    
-    if (l != nullptr) {
-      vector<int> keys;
-      while (l != nullptr) {
-        keys.push_back(l->val);
-        // c += 1;
-        l = l->l;
-      }
+  
+  if (l != nullptr) {
+    vector<int> keys;
+    while (l != nullptr) {
+      keys.push_back(l->val);
+      // c += 1;
+      l = l->l;
+    }
 
-      /*
+    /*
       int ang = 0;
       unsigned x = (sx*8)<<16;
       unsigned y = (sy*8)<<16;
       for_each(keys.rbegin(), keys.rend(), [&x, &y, &ang, dx, dy, key](int i) {
-          // printf("\"%s\",", key[i]);
-          x += dx[i];
-          y += dy[i];
-          ang += 0xb6;
-          printf("%x, %x, %d\n", x, y, ang);
-        });
-      */
-      for_each(keys.rbegin(), keys.rend(), [key](int i) {
-          printf("\"%s\",", key[i]);
-        });
-      puts("");
-      for_each(keys.rbegin(), keys.rend(), [](int i) {
-          printf("%d,", i);
-        });
-      puts("");
-      // puts("");
-      // printf("%d\n", c);
-    }
-    return 0;
+      // printf("\"%s\",", key[i]);
+      x += dx[i];
+      y += dy[i];
+      ang += 0xb6;
+      printf("%x, %x, %d\n", x, y, ang);
+      });
+    */
+    for_each(keys.rbegin(), keys.rend(), [key](int i) {
+        printf("\"%s\",", key[i]);
+      });
+    puts("");
+    for_each(keys.rbegin(), keys.rend(), [](int i) {
+        printf("%d,", i);
+      });
+    puts("");
+    // puts("");
+    // printf("%d\n", c);
   }
+  return 0;
+}
